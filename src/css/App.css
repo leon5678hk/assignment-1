@@ -1,0 +1,934 @@
+
+html,body{
+    background-color: #003366;
+}
+
+p,h2{
+    color: white;
+}
+.navbar {
+    background: linear-gradient(to right, #117add, #073968);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .navbar-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .burger-menu {
+    display: none;
+    cursor: pointer;
+   
+  }
+
+ 
+.nav-menu {
+    display: none;
+    position: absolute;
+    background-color: #003366;
+    text-align: center;
+    left: 0; 
+    right: 0;
+    top: 63px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .nav-menu.active {
+    display: block;
+    position: absolute;
+    background-color: #0e2033;
+    width: 100%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .search-form-dropdown {
+    width: 100%;
+
+}
+
+.search-dropdown {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    margin-bottom: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+  .logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .nav-items {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 2;
+  }
+  
+.nav-button {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 20px; 
+    text-decoration: none;
+    font-size: large;
+    border: none;
+    background: none;
+    cursor: pointer;
+    
+  }
+  .nav-menu.active .nav-button:hover {
+    background-color: #0056b3;
+}
+  .nav-menu .nav-button,
+  .search-form-dropdown{
+      width: 100%;
+      margin-bottom: 10px;
+      display: inline-block;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  .nav-action {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    white-space: nowrap;
+  }
+  
+  
+  .search-container {
+    position: relative;
+    display: inline-block;
+    margin: 4px 2px;
+    
+    height: 50px;
+    width: 50px;
+    vertical-align: bottom;
+    transition: width 0.4s;
+    will-change: width;
+  }
+  
+  .search {
+    position: absolute;
+    right: 0;
+    width: 0;
+    background-color: #00000000;
+    height: 100%;
+    padding: 0 50px 0 0;
+    border: none;
+    outline: none;
+    transition: width 0.4s ease;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .search:focus {
+    width: 200px;
+    position: absolute;
+    right: 0px;
+    padding: 0 10px;
+    cursor: text;
+    z-index: 1;
+  }
+  
+  .searchbutton {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    border: none;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+  }
+
+  
+  .search:focus {
+    background-color: white;
+
+  }
+  
+  .mglass {
+    transform: rotate(-45deg);
+    display: inline-block;
+    font-size: 30px;
+    position: absolute;
+    transition: color 0.1s ease;
+  }
+
+  .search:focus + .searchbutton .mglass {
+    color: black; 
+    z-index: 1;
+    
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance:none;
+  }
+
+
+  
+
+
+.hero-banner-slider {
+    width: 100%; 
+    height: 700px;
+    position: relative;
+    margin: auto;
+    overflow: hidden; 
+}
+
+.mySlides {
+    position: relative;
+    display: none;
+    width: 100%; 
+    height: 100%;
+}
+
+.mySlides img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+}
+
+.mySlides.display {
+    display: block;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    left: 0; 
+}
+
+.hero-prev, .hero-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+
+  .hero-next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+
+  .hero-prev:hover, .hero-next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+
+
+  .dot-container {
+    text-align: center;
+    width: 100%;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+
+
+.carousel{
+    padding: 0px 100px;
+}
+
+.carousel-cell {
+    width: 200px;
+    height: 300px;
+    margin-right: 10px;
+  }
+  
+  .carousel-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+ 
+  .carousel-cell .title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+
+  .featured h2{
+    color: white;
+text-align: center;
+padding: 30px 0px 0px 0px
+  }
+
+
+.adSection {
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0a0a0a;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    color: white;
+    margin: 50px auto;
+    
+  }
+  
+  .priceTag {
+    background-color: #652c90;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+
+  .priceTagContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+    flex: 0 1 auto;
+
+}
+  
+  .cinemaSpotlight {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .movieImages {
+    display: flex;
+    justify-content: start;
+  }
+  
+  .movieImageContainer {
+    margin: 0 5px;
+    flex: 0 1 auto;
+  }
+  
+  .movieImage {
+    width: auto;
+    height: 100px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+
+
+
+.footer {
+    position: relative;
+    background: linear-gradient(to bottom, #003366, #117add);
+    color: white;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .footerLinks {
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  .linkColumn h4 {
+    margin-bottom: 10px;
+  }
+  
+  .linkColumn ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .linkColumn ul li {
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  
+  .socialMediaIcons {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  
+ 
+  .socialMediaIcons a {
+    color: white;
+    font-size: 24px;
+  }
+
+
+
+.modal {
+    display: block; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 50px 50px 50px 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px; 
+    
+}
+
+.accountMenu-switchTab {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+    border: none;
+    border-radius: 50px 50px 0px 0px;
+    overflow: hidden;
+
+}
+
+.accountMenu-title {
+    font-size: larger;
+    font-weight: bold;
+    color: #757575;
+    flex: 1;
+    padding: 20px;
+    background: #e4e4e4;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.accountMenu-activeTitle {
+    font-size: larger;
+    font-weight: bold;
+    color: #0051a1;
+    flex: 1;
+    padding: 20px;
+    background: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.form-input-container {
+    position: relative;
+    padding: 15px 35px;
+  }
+  
+  .form-input-container input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 45px; 
+    box-sizing: border-box;
+  }
+
+  .password-toggle-icon {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    cursor: pointer;
+  }
+
+  .password-toggle-icon.active {
+    color: #003366; 
+    background-color: #00000000;
+}
+
+.additional-links {
+    text-align: center;
+    margin-bottom: 15px;
+    
+}
+
+.checkbox-container {
+    color: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-bottom: 30px;
+  }
+  
+  .checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+  }
+
+  .form-button-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 0px 0px 30px 0px;
+  }
+
+ 
+  .form-button {
+    width: 70%;
+    background-color: #0051a1;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .form-button:hover {
+    background-color: #003366;
+  }
+
+  .forgot-password-form p {
+    text-align: center; 
+    padding: 0px 30px 0px 30px;
+    margin: 10px 0px;
+}
+
+
+
+@media (max-width: 768px) {
+    .nav-items, .nav-actions, .search-container {
+        display: none;
+      }
+    
+      .burger-menu {
+        display: block;
+      }
+    
+      .nav-items, .nav-actions, .search-container {
+        display: none;
+      }
+
+      .nav-menu.active {
+        display: block;
+      }
+  
+    .hero-banner-slider {
+      height: 300px;
+    }
+  
+    .carousel-cell {
+      width: 150px;
+      height: 225px;
+    }
+  
+    
+
+    .search:focus {
+      width: 150px;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 10px;
+      }
+    
+      .footerLinks {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+    
+      .footerLinks .linkColumn {
+        width: 100%;
+        margin-bottom: 20px;
+        align-items: center;
+      }
+    
+      .linkColumn h4,
+      .linkColumn ul,
+      .linkColumn ul li {
+        text-align: center;
+      }
+    
+      .socialMediaIcons {
+        width: 100%;
+        justify-content: center;
+        margin-top: 20px;
+        position: static;
+      }
+
+      .adSection {
+        padding: 5px;
+        flex-wrap: nowrap;
+    }
+
+    .priceTagContainer, .movieImages {
+        flex-direction: row;
+    }
+
+    .movieImages {
+        overflow-x: hidden;
+        white-space: nowrap;
+    }
+
+    .movieImageContainer {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .movieImage {
+        height: 80px;
+    }
+
+    .cinemaSpotlight, .priceTag {
+        font-size: smaller;
+    }
+
+  }
+  
+ 
+  @media (max-width: 480px) {
+
+  
+    .hero-banner-slider {
+      height: 200px;
+    }
+  
+    .carousel-cell {
+      width: 100px;
+      height: 150px;
+    }
+  
+    
+    .search:focus {
+      width: 100px;
+    }
+
+    .footer {
+        padding: 20px;
+      }
+    
+      .socialMediaIcons {
+        margin-bottom: 20px;
+      }
+  }
+  
+ 
+  .list-container {
+    width: 100%;
+    margin: auto;
+  }
+  
+  
+  .list-header {
+    width: 50%;
+    font-size: 24px;
+    text-align: center;
+    color: #fff;
+    margin: 16px auto;
+    padding: 20px 0;
+    background-color: #1a1a1a;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+   
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px 10px;
+    padding: 20px;
+    align-items: center;
+    justify-items: center;
+  }
+  
+  .item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    line-height: 0;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+  }
+  
+  .item:hover{
+    transform: scale(1.05);
+  }
+  
+  .list-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  
+  @media (min-width: 768px) {
+   
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+   
+    .grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  
+  @media (min-width: 1200px) {
+   
+    .grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+
+.movie-detail-container {
+    position: relative;
+    display: flex;
+    padding: 60px 60px 60px 120px;
+  }
+  
+
+
+
+  .movie-poster-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+    position: relative;
+    width: 300px;
+    height: 400px;  
+    padding: 0px 60px 0px 0px;
+
+  }
+
+  .movie-poster {
+    width: 100%; 
+    height: 100%;/* Adjust width as necessary */
+    object-fit: cover; 
+
+  }
+  
+
+  .trailer-button-container {
+    padding: 20px;
+  }
+  
+  .watch-trailer-btn {
+    background-color: #ff0000;
+    font-size: 16px;
+
+   color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 2px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s;
+  }
+  
+  
+  .watch-trailer-btn:hover {
+    background-color: #e60000;
+  }
+
+  .play-icon {
+    margin-right: 8px;
+    font-size: 24px; 
+  }
+
+ 
+.movie-details {
+    flex: 1;
+    padding-left: 80px;
+  }
+  
+  .movie-title {
+    font-size: 50px;
+    margin: 0px 0px 50px 0px;
+  }
+  
+  .movie-rating,
+  .movie-intro,
+  .movie-starring,
+  .movie-genres,
+  .movie-duration,
+  .tv-season {
+    font-size: 20px;
+    margin: 30px 0px;
+  }
+
+  .back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.purchase-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.purchase-buttons .buy-button,
+.purchase-buttons .rent-button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.purchase-buttons .buy-button:hover,
+.purchase-buttons .rent-button:hover {
+    background-color: #007B9E;
+}
+
+@media (max-width: 768px) {
+    .movie-detail-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 50px 0px;
+    }
+
+    .movie-poster-container {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movie-title{
+        margin: 0px;
+    }
+    .movie-details {
+      padding: 60px 0px 0px 0px;
+    }
+
+       .purchase-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
+    .purchase-buttons .buy-button,
+    .purchase-buttons .rent-button {
+        width: 40%;
+        margin: 0;
+    }
+
+  }
+
+
