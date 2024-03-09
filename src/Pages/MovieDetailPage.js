@@ -1,20 +1,17 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom'; 
+import { useParams, Link } from 'react-router-dom';
 import { IoIosPlayCircle } from "react-icons/io";
 
 const MovieDetailPage = ({ movies }) => {
-
     let { id } = useParams();
-
-    const movie = movies.find(movie => movie.id.toString() === id);
-
+    const movie = movies.find(movie => movie.id == id);
     const scrollToTop = () => {
         window.scrollTo(0, 0);
     }
 
     useEffect(() => {
         window.scrollTo(0, 0);
-      }, [id]); 
+    }, [id]);
 
     if (!movie) {
         return <div>Movie not found</div>;
