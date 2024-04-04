@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginModal from './LoginModal';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaSignOutAlt } from 'react-icons/fa';
 
-const NavBar = () => {
+const NavBar = ({ user, onSuccessfulLogin, onSignOut, onSearch }) => {
     const navigate = useNavigate();
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
@@ -23,7 +23,12 @@ const NavBar = () => {
         navigate(path);
         setShowMenu(false);
     };
-    
+
+    const handleSignOutAndRedirect = () => {
+        onSignOut();
+        navigate('/'); // Redirect to home page after sign out
+    };
+
     useEffect(() => {
         function handleClickOutside(event) {
             if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -35,6 +40,21 @@ const NavBar = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [menuRef]);
+
+    const handleSearchEnter = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const query = e.target.value.trim();
+            if (query) {
+                // Update the URL with the search query
+                window.history.pushState({}, '', `/search?query=${encodeURIComponent(query)}`);
+    
+                // Refresh the page
+                window.location.reload();
+            }
+        }
+    };
+
 
     return (
         <nav className="navbar">
@@ -53,7 +73,7 @@ const NavBar = () => {
                             <button className="nav-button" onClick={() => handleLinkClick('/tv')}>TV</button>
                             <button className="nav-button" onClick={toggleLoginModal}>Sign In</button>
                             <form action="/search" method="get" className="search-form-dropdown">
-                                <input type="search" name="q" placeholder="Search" className="search-dropdown" />
+                                <input type="search" name="query" placeholder="Search" className="search-dropdown" />
                             </form>
                         </>
                     )}
@@ -65,20 +85,37 @@ const NavBar = () => {
                 </div>
 
                 <div className="search-container">
-                    <form action="/search" method="get">
-                        <input className="search" type="search" name="q" placeholder="Search" />
-                        <label className="button searchbutton" htmlFor="searchInput">
-                            <span className="mglass">&#9906;</span>
-                        </label>
-                    </form>
+
+                    <input
+                        className="search"
+                        type="search"
+                        name="query"
+                        placeholder="Search"
+                        onKeyDown={handleSearchEnter}
+                    />
+
+
+                    <label className="button searchbutton" htmlFor="searchInput">
+                        <span className="mglass">&#9906;</span>
+                    </label>
                 </div>
 
                 <div className="nav-actions">
-                    <button className="nav-button" onClick={toggleLoginModal}>Sign In</button>
+                    {user ? (
+                        <>
+                            <div className="nav-button" onClick={() => handleLinkClick('/dashboard')}>
+                                Welcome, {user.firstName}
+                            </div>
+                            <FaSignOutAlt className="nav-button" onClick={handleSignOutAndRedirect} />
+                        </>
+
+                    ) : (
+                        <button className="nav-button" onClick={toggleLoginModal}>Sign In</button> // Show sign in button
+                    )}
                 </div>
             </div>
 
-            {showLoginModal && <LoginModal onClose={toggleLoginModal} />}
+            {showLoginModal && <LoginModal onClose={toggleLoginModal} onSuccessfulLogin={onSuccessfulLogin} />}
         </nav>
     );
 };

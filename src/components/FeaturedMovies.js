@@ -24,16 +24,12 @@ class FeaturedMovies extends React.Component {
       this.flickity.destroy();
     }
 
-    getRandomMovies(movies, count) {
-        if (!Array.isArray(movies)) {
-            return []; // Return empty array if movies is not an array
-        }
-        const shuffled = [...movies].sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, count);
-    }
+    getFeaturedMovies(movies) {
+      return movies.filter(movie => movie.is_featured);
+  }
   
     render() {
-        const featuredMovies  = this.getRandomMovies(this.props.movies, 10);
+      const featuredMovies = this.getFeaturedMovies(this.props.movies);
 
         return (
             <div className="featured">

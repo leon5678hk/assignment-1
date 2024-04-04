@@ -3,16 +3,21 @@ import React from 'react';
 
 const AdSection = ({ movies, tvShows }) => {
 
+
+  const getFeaturedItems = (items) => items.filter(item => item.is_featured);
+
     const getRandomItems = (items, count) => {
         const shuffled = items.sort(() => 0.5 - Math.random());//-ve ->sorted to lower index,=0 unchange,+ve higher index
         return shuffled.slice(0, count);
     };
-
+    // Get featured items
+    const featuredMovies = getFeaturedItems(movies);
+    const featuredTVShows = getFeaturedItems(tvShows);
     // Get 5 random movies and TV shows
-    const randomMovies = getRandomItems(movies, 5);
-    const randomTVShows = getRandomItems(tvShows, 5);
+    const randomFeaturedMovies  = getRandomItems(featuredMovies, 5);
+    const randomFeaturedTVShows  = getRandomItems(featuredTVShows, 5);
 
-    const combinedItems = [...randomMovies, ...randomTVShows]
+    const combinedItems = [...randomFeaturedMovies, ...randomFeaturedTVShows]
                              .sort(() => 0.5 - Math.random());
 
     return (

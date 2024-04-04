@@ -23,17 +23,13 @@ class FeaturedTVshows extends React.Component {
     componentWillUnmount() {
       this.flickity.destroy();
     }
-    
-    getRandomTVShows(tvShows, count) {
-      if (!Array.isArray(tvShows)) {
-          return [];
-      }
-      const shuffled = [...tvShows].sort(() => 0.5 - Math.random());
-      return shuffled.slice(0, count);
+    getFeaturedTVShows(tvShows) {
+      return tvShows.filter(tvShows => tvShows.is_featured);
   }
 
+
   render() {
-    const featuredTVShows = this.getRandomTVShows(this.props.tvShows, 10);
+    const featuredTVShows = this.getFeaturedTVShows(this.props.tvShows);
 
     return (
         <div className="featured">
