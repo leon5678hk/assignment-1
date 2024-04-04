@@ -5,6 +5,11 @@ const UserDashboard = ({ user }) => {
     <div className="user-dashboard">
       <h2>Account</h2>
       <div className="user-detail">
+        <strong>Customer ID</strong>
+        <div>{user.id}</div>
+      </div>
+
+      <div className="user-detail">
         <strong>Name</strong>
         <div>{user.firstName} {user.lastName} </div>
       </div>

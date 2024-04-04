@@ -37,6 +37,7 @@ const LoginModal = ({ onClose, onSuccessfulLogin }) => {
     const [loginErrors, setLoginErrors] = useState({});
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const apiUrl = "https://server-app-latest.onrender.com"  ;
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -52,7 +53,7 @@ const LoginModal = ({ onClose, onSuccessfulLogin }) => {
             password: signUpPassword
         };
 
-        fetch('http://localhost:3000/users', {
+        fetch(`${apiUrl}/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -129,7 +130,7 @@ const LoginModal = ({ onClose, onSuccessfulLogin }) => {
             password
         };
 
-        fetch('http://localhost:3000/users/authenticate', {
+        fetch(`${apiUrl}/users/authenticate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

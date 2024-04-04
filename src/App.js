@@ -21,6 +21,7 @@ function App() {
   const [user, setUser] = useState(null); // State to store user data
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const apiUrl = "https://server-app-latest.onrender.com";
 
 
   useEffect(() => {
@@ -34,7 +35,7 @@ function App() {
 
   const fetchMovies = async () => {
     try {
-      const response = await fetch('http://localhost:3000/movies');
+      const response = await fetch(`${apiUrl}/movies`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -47,7 +48,7 @@ function App() {
 
   const fetchTVShows = async () => {
     try {
-      const response = await fetch('http://localhost:3000/tvshows');
+      const response = await fetch(`${apiUrl}/tvshows`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -68,35 +69,35 @@ function App() {
     localStorage.removeItem('user'); // Assuming you store user data in localStorage
   };
 
-/*
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-  };
-
-  useEffect(() => {
-    if (!searchQuery) {
-      setSearchResults([]);
-      return;
-    }
-
-    const lowerCaseQuery = searchQuery.toLowerCase();
-
-    const filteredResults = [...movies, ...tvShows]
-      .filter(item => item.title.toLowerCase().includes(lowerCaseQuery))
-      .map(item => ({
-        ...item,
-        type: item.duration ? 'movie' : 'tvShow' // Assuming duration is a property unique to movies
-      }));
-
-    setSearchResults(filteredResults);
-  }, [searchQuery, movies, tvShows]); // Update results when query, movies, or tvShows change
-
-*/
+  /*
+    const handleSearch = (query) => {
+      setSearchQuery(query);
+    };
+  
+    useEffect(() => {
+      if (!searchQuery) {
+        setSearchResults([]);
+        return;
+      }
+  
+      const lowerCaseQuery = searchQuery.toLowerCase();
+  
+      const filteredResults = [...movies, ...tvShows]
+        .filter(item => item.title.toLowerCase().includes(lowerCaseQuery))
+        .map(item => ({
+          ...item,
+          type: item.duration ? 'movie' : 'tvShow' // Assuming duration is a property unique to movies
+        }));
+  
+      setSearchResults(filteredResults);
+    }, [searchQuery, movies, tvShows]); // Update results when query, movies, or tvShows change
+  
+  */
 
   return (
     <Router>
       <div>
-      <NavBar user={user} onSuccessfulLogin={handleSuccessfulLogin} onSignOut={handleSignOut} />
+        <NavBar user={user} onSuccessfulLogin={handleSuccessfulLogin} onSignOut={handleSignOut} />
         <Routes>
           <Route path="/" element={<>
             <Hero />
@@ -110,8 +111,7 @@ function App() {
           <Route path="/tv" element={<TVshowsPage tvShows={tvShows} />} />
           <Route path="/moviedetails/:id" element={<MovieDetailPage movies={movies} />} />
           <Route path="/tvshowdetail/:id" element={<TVShowDetailPage tvShows={tvShows} />} />
-          <Route path="/dashboard" element={user ? <UserDashboard user={user} /> : <div>Please login to view this page</div>} />
-          {/*<Route path="/search" element={<SearchResults searchResults={searchResults} searchQuery={searchQuery} />} />*/}
+          <Route path="/dashboard" element={user ? <UserDashboard user={user} /> : <div style={{ color: 'white', textAlign: 'center' }}><h1>Please login to view this page</h1></div>}/>
           <Route path="/search" element={<SearchResults movies={movies} tvShows={tvShows} />} />
 
         </Routes>
