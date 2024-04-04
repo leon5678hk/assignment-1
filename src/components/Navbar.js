@@ -71,7 +71,21 @@ const NavBar = ({ user, onSuccessfulLogin, onSignOut, onSearch }) => {
 
                             <button className="nav-button" onClick={() => handleLinkClick('/movies')}>Movies</button>
                             <button className="nav-button" onClick={() => handleLinkClick('/tv')}>TV</button>
-                            <button className="nav-button" onClick={toggleLoginModal}>Sign In</button>
+                            
+                            
+                            {user ? (
+                                <>
+                                <button className="nav-button" onClick={() => handleLinkClick('/dashboard')}>
+                                    Dashboard
+                                </button>
+                                <button className="nav-button" onClick={handleSignOutAndRedirect}>
+                                    Sign Out
+                                </button>
+                                </>
+                            ) : (
+                                <button className="nav-button" onClick={toggleLoginModal}>Sign In</button>
+                            )}                            
+                            
                             <form action="/search" method="get" className="search-form-dropdown">
                                 <input type="search" name="query" placeholder="Search" className="search-dropdown" />
                             </form>
