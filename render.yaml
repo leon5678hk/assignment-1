@@ -1,6 +1,5 @@
 services:
 - type: web
-  name: myvideo # Replace with your Render service name
   env: static
   staticPublishPath: ./build
   routes:
