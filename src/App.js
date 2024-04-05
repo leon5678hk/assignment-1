@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import Hero from './components/Hero';
 import MoviesPage from './Pages/MoviesPage';
@@ -18,9 +17,7 @@ import './css/App.css';
 function App() {
   const [movies, setMovies] = useState([]);
   const [tvShows, setTvShows] = useState([]);
-  const [user, setUser] = useState(null); // State to store user data
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [user, setUser] = useState(null); 
   const apiUrl = "https://server-app-latest.onrender.com";
 
 
@@ -66,33 +63,8 @@ function App() {
 
   const handleSignOut = () => {
     setUser(null); // Reset user data
-    localStorage.removeItem('user'); // Assuming you store user data in localStorage
+    localStorage.removeItem('user'); // clear localStorage
   };
-
-  /*
-    const handleSearch = (query) => {
-      setSearchQuery(query);
-    };
-  
-    useEffect(() => {
-      if (!searchQuery) {
-        setSearchResults([]);
-        return;
-      }
-  
-      const lowerCaseQuery = searchQuery.toLowerCase();
-  
-      const filteredResults = [...movies, ...tvShows]
-        .filter(item => item.title.toLowerCase().includes(lowerCaseQuery))
-        .map(item => ({
-          ...item,
-          type: item.duration ? 'movie' : 'tvShow' // Assuming duration is a property unique to movies
-        }));
-  
-      setSearchResults(filteredResults);
-    }, [searchQuery, movies, tvShows]); // Update results when query, movies, or tvShows change
-  
-  */
 
   return (
     <Router>

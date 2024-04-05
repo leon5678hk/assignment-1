@@ -23,10 +23,10 @@ const NavBar = ({ user, onSuccessfulLogin, onSignOut, onSearch }) => {
         navigate(path);
         setShowMenu(false);
     };
-
+    
     const handleSignOutAndRedirect = () => {
         onSignOut();
-        navigate('/'); // Redirect to home page after sign out
+        navigate('/'); 
     };
 
     useEffect(() => {
@@ -49,7 +49,6 @@ const NavBar = ({ user, onSuccessfulLogin, onSignOut, onSearch }) => {
                 // Update the URL with the search query
                 window.history.pushState({}, '', `/search?query=${encodeURIComponent(query)}`);
     
-                // Refresh the page
                 window.location.reload();
             }
         }

@@ -13,7 +13,7 @@ const AdSection = ({ movies, tvShows }) => {
     // Get featured items
     const featuredMovies = getFeaturedItems(movies);
     const featuredTVShows = getFeaturedItems(tvShows);
-    // Get 5 random movies and TV shows
+    // Get 5 random movies and TV shows from featured items
     const randomFeaturedMovies  = getRandomItems(featuredMovies, 5);
     const randomFeaturedTVShows  = getRandomItems(featuredTVShows, 5);
 
