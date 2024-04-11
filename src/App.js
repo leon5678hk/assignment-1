@@ -75,8 +75,7 @@ function App() {
             <Hero />
             {movies.length > 0 && <FeaturedMovies movies={movies} />}
             {tvShows.length > 0 && <FeaturedTVshows tvShows={tvShows} />}
-
-            {(movies.length > 0 && tvShows.length > 0) && <AdSection movies={movies} tvShows={tvShows} />}
+            <AdSection movies={movies} tvShows={tvShows} />
           </>} />
 
           <Route path="/movies" element={<MoviesPage movies={movies} />} />
