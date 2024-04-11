@@ -18,7 +18,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [tvShows, setTvShows] = useState([]);
   const [user, setUser] = useState(null); 
-  const apiUrl = "https://server-app-latest.onrender.com";
+  const apiUrl = "https://server-app-latest.onrender.com";//delopyed link
 
 
   useEffect(() => {
