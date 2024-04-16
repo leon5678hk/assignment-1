@@ -14,18 +14,18 @@ const SearchResults = () => {
             setSearchResults([]);
             return;
         }
-
-        // Call the backend API to get search results
+              
+        //fetch(`https://server-app-latest.onrender.com/search?query=${encodeURIComponent(query)}`)
         fetch(`http://localhost:3000/search?query=${encodeURIComponent(query)}`)
             .then(response => response.json())
             .then(data => {
-                setSearchResults(data); // Expecting the backend to return an array of objects
+                setSearchResults(data); 
             })
             .catch(error => {
                 console.error('Error fetching search results:', error);
-                setSearchResults([]); // Handle errors by setting no results
+                setSearchResults([]); 
             });
-    }, [location.search]); // Depend on location.search to re-run when query changes
+    }, [location.search]); 
 
     return (
         <div className="list-container">
