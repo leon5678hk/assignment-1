@@ -35,10 +35,10 @@ const MovieDetailPage = ({ movies }) => {
                 <h2 className="movie-title">{movie.title}</h2>
                 <p className="movie-intro">{movie.intro}</p>
                 <p className="movie-rating"><strong>IMDb Rating: </strong>{movie.imdbRating} ★</p>
-                <p className="movie-starring"><strong>Starring:</strong>  {movie.starring}</p>
+                <p className="movie-starring"><strong>Starring:</strong>  {movie.starring.join(', ')}</p>
                 <p className="movie-genres"><strong>Genres:</strong>  {movie.genres.join(', ')}</p>
                 <p className="movie-duration"><strong>Duration: </strong> {movie.duration} minutes</p>
-
+featuredMovies
                 <div className="purchase-buttons">
                     <button className="rent-button">Rent for ${movie.rentPrice}</button>
                     <button className="buy-button">Buy for ${movie.purchasePrice}</button>

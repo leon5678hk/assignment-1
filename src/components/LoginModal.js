@@ -146,10 +146,9 @@ const LoginModal = ({ onClose, onSuccessfulLogin }) => {
         })
         .then(data => {
             // Handle successful login
-            console.log("Login Successful:", data); // This will display the response in the console
-            onSuccessfulLogin(data); // Pass the user data to the parent component
-            onClose(); // Close the modal
-            // You can redirect the user or update the user state here
+            console.log("Login Successful:", data); 
+            onSuccessfulLogin(data); 
+            onClose(); 
         })
         .catch(error => {
             // Handle login error

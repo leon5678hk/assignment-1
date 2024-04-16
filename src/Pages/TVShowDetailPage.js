@@ -33,7 +33,7 @@ const TVShowDetailPage = ({ tvShows }) => {
         <h2 className="movie-title">{tvShow.title}</h2>
         <p className="movie-intro">{tvShow.intro}</p>
         <p className="movie-rating"><strong>IMDb Rating: </strong>{tvShow.imdbRating} ★</p>
-        <p className="movie-starring"><strong>Starring:</strong>  {tvShow.starring}</p>
+        <p className="movie-starring"><strong>Starring:</strong>  {tvShow.starring.join(', ')}</p>
         <p className="movie-genres"><strong>Genres:</strong>  {tvShow.genres.join(', ')}</p>
         <p className="tv-season"><strong>Season: </strong> {tvShow.seasons}</p>
 

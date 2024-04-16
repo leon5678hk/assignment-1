@@ -17,6 +17,8 @@ import './css/App.css';
 function App() {
   const [movies, setMovies] = useState([]);
   const [tvShows, setTvShows] = useState([]);
+  const [featuredMovies, setFeaturedMovies] = useState([]);
+  const [featuredTVShows, setFeaturedTVShows] = useState([]); 
   const [user, setUser] = useState(null); 
   //const apiUrl = "https://server-app-latest.onrender.com";//delopyed link
   const apiUrl = "http://localhost:3000";
@@ -29,6 +31,8 @@ function App() {
     }
     fetchMovies();
     fetchTVShows();
+    fetchFeaturedMovies();
+    fetchFeaturedTVShows(); 
   }, []);
 
   const fetchMovies = async () => {
@@ -57,6 +61,33 @@ function App() {
     }
   };
 
+
+  const fetchFeaturedMovies = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/movies?isFeatured=true`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setFeaturedMovies(data);
+    } catch (error) {
+      console.error('Error fetching featured movies:', error);
+    }
+  };
+
+  const fetchFeaturedTVShows = async () => { 
+    try {
+      const response = await fetch(`${apiUrl}/tvshows?isFeatured=true`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setFeaturedTVShows(data); 
+    } catch (error) {
+      console.error('Error fetching featured TV shows:', error);
+    }
+  };
+
   const handleSuccessfulLogin = (userData) => {
     setUser(userData); // Store user data after successful login
     localStorage.setItem('user', JSON.stringify(userData)); // Store user data in localStorage
@@ -74,8 +105,8 @@ function App() {
         <Routes>
           <Route path="/" element={<>
             <Hero />
-            {movies.length > 0 && <FeaturedMovies movies={movies} />}
-            {tvShows.length > 0 && <FeaturedTVshows tvShows={tvShows} />}
+            {<FeaturedMovies movies={featuredMovies} />}
+            {<FeaturedTVshows tvShows={featuredTVShows} />}
             <AdSection movies={movies} tvShows={tvShows} />
           </>} />
 
@@ -84,7 +115,7 @@ function App() {
           <Route path="/moviedetails/:id" element={<MovieDetailPage movies={movies} />} />
           <Route path="/tvshowdetail/:id" element={<TVShowDetailPage tvShows={tvShows} />} />
           <Route path="/dashboard" element={user ? <UserDashboard user={user} /> : <div style={{ color: 'white', textAlign: 'center' }}><h1>Please login to view this page</h1></div>}/>
-          <Route path="/search" element={<SearchResults movies={movies} tvShows={tvShows} />} />
+          <Route path="/search" element={<SearchResults />} />
 
         </Routes>
         <Footer />

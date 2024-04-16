@@ -359,8 +359,8 @@ padding: 30px 0px 0px 0px
   
   .movieImages {
     display: flex;
-    justify-content: start;
-  }
+    justify-content: flex-start; 
+    }
   
   .movieImageContainer {
     margin: 0 5px;
