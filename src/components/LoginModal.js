@@ -37,8 +37,8 @@ const LoginModal = ({ onClose, onSuccessfulLogin }) => {
     const [loginErrors, setLoginErrors] = useState({});
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const apiUrl = "https://server-app-latest.onrender.com"  ;
-
+    //const apiUrl = "https://server-app-latest.onrender.com";
+    const apiUrl = "http://localhost:3000";
     const handleSignUp = (e) => {
         e.preventDefault();
 

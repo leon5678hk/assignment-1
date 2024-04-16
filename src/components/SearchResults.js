@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-const SearchResults = ({ movies, tvShows }) => {
+const SearchResults = () => {
     const [searchResults, setSearchResults] = useState([]);
     const location = useLocation();
 
@@ -15,18 +15,17 @@ const SearchResults = ({ movies, tvShows }) => {
             return;
         }
 
-        const lowerCaseQuery = query.toLowerCase();
-
-        const filteredMovies = movies.filter(movie =>
-            movie.title.toLowerCase().includes(lowerCaseQuery)
-        ).map(movie => ({ ...movie, type: 'movie' }));
-
-        const filteredTvShows = tvShows.filter(tvShow =>
-            tvShow.title.toLowerCase().includes(lowerCaseQuery)
-        ).map(tvShow => ({ ...tvShow, type: 'tvShow' }));
-
-        setSearchResults([...filteredMovies, ...filteredTvShows]);
-    }, [location, movies, tvShows]);
+        // Call the backend API to get search results
+        fetch(`http://localhost:3000/search?query=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                setSearchResults(data); // Expecting the backend to return an array of objects
+            })
+            .catch(error => {
+                console.error('Error fetching search results:', error);
+                setSearchResults([]); // Handle errors by setting no results
+            });
+    }, [location.search]); // Depend on location.search to re-run when query changes
 
     return (
         <div className="list-container">

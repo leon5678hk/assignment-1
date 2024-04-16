@@ -23,6 +23,17 @@ class FeaturedTVshows extends React.Component {
     componentWillUnmount() {
       this.flickity.destroy();
     }
+
+    fetchFeaturedTVShows() {
+      // Fetch movies from the server
+      //fetch('https://server-app-latest.onrender.com/tvShows?isFeatured=true')
+      fetch('https://localhost:3000/tvShows?isFeatured=true')
+        .then(response => response.json())
+        .then(data => this.setState({ tvShows: data }))
+        .catch(error => console.error('Error fetching featured tvShows:', error));
+    }
+
+
     getFeaturedTVShows(tvShows) {
       return tvShows.filter(tvShows => tvShows.is_featured);
   }
